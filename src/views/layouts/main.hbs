@@ -1,0 +1,32 @@
+<nav>
+  <a href="/"> Inicio </a>
+  <a href="/api/products"> Productos </a>
+  <a href="/api/carts"> Carrito </a>
+</nav>
+
+<h1> Bienvenido </h1>
+
+<h2> Productos </h2>
+<ul>
+  {{#each products}}
+    <li>
+      <h3>{{this.title}}</h3>
+      <p>{{this.description}}</p>
+      <p><strong> Precio: </strong> ${{this.price}}</p>
+      <p><strong> Categoría: </strong> {{this.category}}</p>
+      <p><strong> Disponibilidad: </strong> {{#if this.available}}Disponible{{else}}No disponible{{/if}}</p>
+    </li>
+  {{/each}}
+</ul>
+
+<h2> Carrito </h2>
+{{#if cart.products.length}}
+  <ul>
+    {{#each cart.products}}
+      <li>{{this.title}} - ${{this.price}}</li>
+    {{/each}}
+  </ul>
+  <p> Total de productos: {{cart.products.length}}</p>
+{{else}}
+  <p> Tu carrito está vacío. </p>
+{{/if}}
